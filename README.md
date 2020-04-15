@@ -58,6 +58,7 @@ The configurations are based off the following articles and repositories:
  - https://github.com/NikolajLeischner/local-prometheus-grafana
  - https://www.digitalocean.com/community/tutorials/how-to-add-a-prometheus-dashboard-to-grafana
  - https://github.com/aborroy/alfresco-solr-monitoring
+ - https://lucene.apache.org/solr/guide/7_3/monitoring-solr-with-prometheus-and-grafana.html
 
 ## License
 
