@@ -57,6 +57,7 @@ The configurations are based off the following articles and repositories:
  - https://finestructure.co/blog/2016/5/16/monitoring-with-prometheus-grafana-docker-part-1
  - https://github.com/NikolajLeischner/local-prometheus-grafana
  - https://www.digitalocean.com/community/tutorials/how-to-add-a-prometheus-dashboard-to-grafana
+ - https://github.com/aborroy/alfresco-solr-monitoring
 
 ## License
 
