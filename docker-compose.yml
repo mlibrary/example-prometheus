@@ -35,6 +35,35 @@ services:
   redis:
     image: redis
     command: redis-server
+    
+  solr:
+    image: solr:8
+    ports:
+      - "8983:8983"
+    volumes:
+      - data:/var/solr
+    command:
+      - solr-precreate
+      - gettingstarted
+      
+  solr-exporter:
+    image: solr:8
+    depends_on:
+      - solr
+    ports:
+      - "9854:9854"
+    entrypoint:
+      - "/opt/solr-8.5.0/contrib/prometheus-exporter/bin/solr-exporter"
+      - "-p"
+      - "9854"
+      - "-b"
+      - "http://solr:8983/solr"
+      - "-f"
+      - "/opt/solr-8.5.0/contrib/prometheus-exporter/conf/solr-exporter-config.xml"
+      - "-n"
+      - "8"
+    volumes:
+      - ./dockerInfo/solr-exporter-config.xml:/opt/solr-8.5.0/contrib/prometheus-exporter/conf/solr-exporter-config.xml
 
   grafana:
     image: grafana/grafana:5.2.4
@@ -44,12 +73,15 @@ services:
       - 3000:3000/tcp
     volumes: 
       - ./grafana_db:/var/lib/grafana
+      - ./dockerInfo/prometheus.yml:/etc/grafana/provisioning/datasources/prometheus.yml
+      - ./dockerInfo/solr.yml:/etc/grafana/provisioning/dashboards/solr.yml
+      - ./dockerInfo/grafana-solr-dashboard.json:/var/lib/grafana/dashboards/grafana-solr-dashboard.json
     user: "104"
 
   prometheus:
     image: prom/prometheus:v2.4.3
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./dockerInfo/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090/tcp
     depends_on:
@@ -64,3 +96,6 @@ services:
     depends_on:
       - rails
     command: -z 2m -c 15 -m GET http://rails:5000
+          
+volumes:
+  data: 
