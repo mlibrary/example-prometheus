@@ -27,6 +27,8 @@ You also could run rails stressor again by executing `docker-compose up rails_st
 - The [Prometheus] Web UI runs at http://localhost:9090
 - The [Grafana] Web UI runs at http://localhost:3000 , user: `admin`/`admin`.
 - The [Sidekiq] Web UI is available at http://localhost:5000/sidekiq
+- Now includes Solr admin: http://localhost:8983/solr/#/
+- Solr-Exporter: http://localhost:9854/metrics
 
 ## Possible errors and their solutions
 
@@ -69,3 +71,4 @@ This example is available as open source under the terms of the [MIT License](ht
 [Sidekiq]: https://github.com/mperham/sidekiq/ "Simple, efficient background processing for Ruby"
 [Prometheus]: https://prometheus.io/ "Open-source monitoring solution"
 [Grafana]: https://grafana.com/
+[Solr and Prometheus]: https://lucene.apache.org/solr/guide/7_3/monitoring-solr-with-prometheus-and-grafana.html
