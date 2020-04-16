@@ -1,4 +1,4 @@
-# Example of Rails, Sidekiq and Puma metrics exported to Prometheus + Grafana
+# Example of Rails, Sidekiq, Puma and Solr metrics exported to Prometheus + Grafana
 
 This example illustrates how to use [yabeda] gem suite with rails application to draw graphs for app metrics.
 
